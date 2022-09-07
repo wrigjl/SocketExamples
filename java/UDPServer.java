@@ -36,7 +36,6 @@ public class UDPServer {
 		DatagramPacket outputPacket = new DatagramPacket(txBuffer, txBuffer.length, address, port);
 		
 		sock.send(outputPacket);
-		sock.close();
 	    }
 	} catch (Exception e) {
 	    e.printStackTrace();
