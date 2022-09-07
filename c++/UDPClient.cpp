@@ -129,6 +129,10 @@ out:
         result = NULL;
     }
 
+#ifdef _WIN32
+    WSACleanup();
+#endif
+
     return rc;
 }
 
