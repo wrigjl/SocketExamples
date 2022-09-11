@@ -8,15 +8,15 @@ import argparse
 from socket import socket, AF_INET, SOCK_STREAM
 
 def main():
-    """udp server handler: creates socket and handles requests"""
+    """tcp server handler: creates socket and sends/receives data"""
 
     parser = argparse.ArgumentParser(description="TCP client example")
-    parser.add_argument('port', help="the port to use",
-                        nargs='?',
-                        default=9999)
     parser.add_argument('address', nargs='?',
                         help="the address for this machine",
                         default='localhost')
+    parser.add_argument('port', help="the port to use",
+                        nargs='?', type=int,
+                        default=9999)
     args = parser.parse_args()
 
     sock = socket(AF_INET, SOCK_STREAM)

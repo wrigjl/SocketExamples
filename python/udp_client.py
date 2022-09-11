@@ -8,15 +8,15 @@ import argparse
 from socket import socket, AF_INET, SOCK_DGRAM
 
 def main():
-    """udp server handler: creates socket and handles requests"""
+    """udp client handler: creates socket and sends data"""
 
     parser = argparse.ArgumentParser(description="UDP client example")
-    parser.add_argument('port', help="the port to use",
-                        nargs='?',
-                        default=9999)
     parser.add_argument('address', nargs='?',
-                        help="the address for this machine",
+                        help="the address for remote machine",
                         default='localhost')
+    parser.add_argument('port', help="the port to use",
+                        nargs='?', type=int,
+                        default=9999)
     args = parser.parse_args()
 
     sock = socket(AF_INET, SOCK_DGRAM)
@@ -28,7 +28,7 @@ def main():
     print(f"message sent: {message}")
     message, server = sock.recvfrom(1024)
     print(f"message received from {server}: {message}")
-
+    sock.close()
 
 if __name__ == "__main__":
     main()
