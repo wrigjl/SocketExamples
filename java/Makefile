@@ -1,11 +1,15 @@
 
-all: UDPServer.class UDPClient.class
+ALL=UDPServer.class UDPClient.class TCPClient.class TCPServer.class
+
+all: $(ALL)
+
+.SUFFIXES: .java .class
+
+.java.class:
+	javac -deprecation $<
 
 UDPServer.class: UDPServer.java
-	javac $<
-
 UDPClient.class: UDPClient.java
-	javac $<
 
 clean:
-	rm -f UDPServer.class
+	rm -f $(ALL)
